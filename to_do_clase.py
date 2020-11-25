@@ -3,6 +3,7 @@ import datetime
 
 class TodoList:
     def __init__(self):
+        self.lista = ['task', 'data', 'persoana', 'categ_task']
         self.lista_task = []
         self.lista_to_do = []
         #  lista folosita la sortare in functie de anumiti param asc/desc
@@ -128,7 +129,6 @@ class TodoList:
         """)
         try:
             self.filtru_3 = int(input("Aelge un nmar de la 1 la 4"))
-            self.lista = ['task', 'data', 'persoana', 'categ_task']
             self.string = input("Alege introducerea unui string utilizat pentru filtrarea în lista inițială de date")
             for values in self.lista_to_do:
                 for key, value in values.items():
@@ -172,14 +172,30 @@ class TodoList:
         return self.lista_to_do
 
     def editare_detalii_task(self):
-        i = j = 0
+        i = 0
         for values in self.lista_to_do:
             print(i, values)
             i += 1
             for key in values.keys():
-                print(j, key)
-                j += 10*1
-        print("Ce task vrei sa editezi? alege numarul task ului respectiv")
+                print( key)
+        print("Ce linie vrei sa editezi? alege numarul liniei respective")
+        try:
+            self.linie =int(input(" "))
+            if self.linie in range(len(self.lista_to_do)):
+                print("Ce task vrei sa editezi? alege task ul  respective")
+                self.task_ales =input("")
+                if self.task_ales in self.lista:
+                    self.lista_to_do[self.linie][self.task_ales] = input(" valoarea noua este")
+                else:
+                    print("nu exista acest atribut")
+            else:
+                print("linia nu este in acest range")
+            print(self.lista_to_do)
+        except ValueError:
+            print("valoarea gresita")
+
+
+
 
     def stergere_task(self):
 
